@@ -1,0 +1,12 @@
+<p>This is the partial for view 1.</p>
+
+<input type="button" ng-click="addCredit(credit)" value="add" />
+
+<div ng-repeat="item in credits">
+    <input type="text" value="{{item.percentsYear}}" />
+    <p>Monthly percent: {{item.percentsMonth}}</p>
+    <input type="text" value="{{item.creditSum}}" />
+    <ul> months:
+       <li ng-repeat="crCount in item.creditCounts">{{crCount.months}}</li>
+    </ul>
+</div>

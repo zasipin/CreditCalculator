@@ -26,7 +26,8 @@ servicesModule.factory('credit', function() {
 
     var creditObj = {
         percentsYear: 2,
-        //percentsMonth: 0,
+        percentsMonth: function(percents){ return percents / 12 },
+        percentsPerMonth: 0,
         inflation: 0,
         percentsReal: 0,
         creditSum: 0,
@@ -43,6 +44,9 @@ servicesModule.factory('credit', function() {
             return creditCountArray;
         }()
     };
-    creditObj.percentsMonth = creditObj.percentsYear / 12;
+    creditObj.updatePercentsMonth = function(yearPercents){
+          this.percentsPerMonth = yearPercents / 12;
+          return this.percentsPerMonth;
+    };
     return creditObj;
 });

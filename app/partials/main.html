@@ -3,9 +3,11 @@
 <input type="button" ng-click="addCredit(credit)" value="add" />
 
 <div ng-repeat="item in credits">
-    <input type="text" value="{{item.percentsYear}}" />
-    <p>Monthly percent: {{item.percentsMonth}}</p>
-    <input type="text" value="{{item.creditSum}}" />
+    <p>Percent per year</p>
+    <input type="text" ng-model="item.percentsYear"/>
+    <p>Monthly percent: {{item.percentsMonth(item.percentsYear)}}, {{item.updatePercentsMonth(item.percentsYear)}}</p>
+    <p id="credit-amount">Credit amount:</p>
+    <input type="text" value="{{item.creditSum}}" ng-model="item.creditSum"/>
     <ul> months:
        <li ng-repeat="crCount in item.creditCounts">{{crCount.months}}</li>
     </ul>

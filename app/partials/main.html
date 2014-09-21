@@ -1,6 +1,7 @@
+<div class="container-fluid">
 <p>This is the partial for view 1.</p>
 
-<input type="button" ng-click="addCredit(credit)" value="add" />
+<input type="button" class="btn btn-primary" ng-click="addCredit(credit)" value="add" />
 
 <div ng-repeat="item in credits">
     <p>Percent per year</p>
@@ -9,6 +10,14 @@
     <p id="credit-amount">Credit amount:</p>
     <input type="text" value="{{item.creditSum}}" ng-model="item.creditSum"/>
     <ul> months:
-       <li ng-repeat="crCount in item.creditCounts">{{crCount.months}}</li>
+       <li ng-repeat="crCount in item.creditCounts">{{crCount.months}}, {{crCount.months / 12}} year(s)
+       <p>Annuitet coefficient: {{crCount.annuitetCoefficient(item.percentsPerMonth, item.creditSum)}}</p>
+       <p>Monthly payment: {{crCount.monthlyPay|currency}}</p>
+       <p>Totally payed: {{crCount.totalPay|currency}}</p>
+       <p>Overpay: {{crCount.overpay|currency}}</p>
+       <p>Overpay percents: {{crCount.overpayPercentage}}</p>
+
+       </li>
     </ul>
+</div>
 </div>

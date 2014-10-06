@@ -35,12 +35,16 @@ servicesModule.factory('credit', function() {
 
     var creditObj = {
         monthsInYear: 12,
-        percentsYear: 2,
+        percentsYear: 20,
         percentsMonth: function(percents){ return percents / 12 },
         percentsPerMonth: 0,
-        inflation: 0,
-        percentsReal: 0,
-        creditSum: 1000,
+        inflation: 7,
+        percentsReal: function(percents, inflation)
+        {
+            return ((1 + percents / 100) / (1 + inflation / 100) - 1) * 100;
+
+        },
+        creditSum: 100000,
         creditCounts: function()
         {
             var creditCountArray = [],
@@ -49,7 +53,13 @@ servicesModule.factory('credit', function() {
                 maxMonths = 300;
             for(; i <= 300; i += monthsIterate)
             {
-                creditCountArray.push(new CreditCount({months: i}));
+                var creditCountObj = new CreditCount({months: i});
+                if(creditPrevious)
+                {
+                    creditCountObj.recentYearDifference = creditCountObj.overpayPercentage - creditPrevious.overpayPercentage;
+                }
+                creditCountArray.push(creditCountObj);
+                var creditPrevious = creditCountObj;
             }
             return creditCountArray;
         }()

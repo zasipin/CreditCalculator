@@ -5,18 +5,34 @@
 
 <div ng-repeat="item in credits">
     <p>Percent per year</p>
+    <p>
     <input type="text" ng-model="item.percentsYear"/>
-    <p>Monthly percent: {{item.percentsMonth(item.percentsYear)}}, {{item.updatePercentsMonth(item.percentsYear)}}</p>
+    Monthly percent: {{item.percentsMonth(item.percentsYear)|number}}, {{item.updatePercentsMonth(item.percentsYear)*100|number}}%</p>
+    <p>Inflation: <input type="text" ng-model="item.inflation"/></p>
+    <p>Real percents: {{item.percentsReal(item.percentsYear, item.inflation)|number}}%</p>
     <p id="credit-amount">Credit amount:</p>
     <input type="text" value="{{item.creditSum}}" ng-model="item.creditSum"/>
-    <ul> months:
-       <li ng-repeat="crCount in item.creditCounts">{{crCount.months}}, {{crCount.months / 12}} year(s)
-       <p>Annuitet coefficient: {{crCount.annuitetCoefficient(item.percentsPerMonth, item.creditSum)}}</p>
-       <p>Monthly payment: {{crCount.monthlyPay|currency}}</p>
-       <p>Totally payed: {{crCount.totalPay|currency}}</p>
-       <p>Overpay: {{crCount.overpay|currency}}</p>
-       <p>Overpay percents: {{crCount.overpayPercentage}}</p>
 
+    <ul class="list-unstyled list-inline">
+       <li>
+       <strong>
+       <p>Months:</p>
+       <p>Annuitet coefficient:</p>
+       <p>Monthly payment:</p>
+       <p>Totally payed:</p>
+       <p>Overpay:</p>
+       <p>Overpay percents:</p>
+       <p>Recent year difference:</p>
+       </strong>
+       </li>
+       <li ng-repeat="crCount in item.creditCounts">
+       <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
+       <p>{{crCount.annuitetCoefficient(item.percentsPerMonth, item.creditSum)|number}}</p>
+       <p>{{crCount.monthlyPay|currency}}</p>
+       <p>{{crCount.totalPay|currency}}</p>
+       <p>{{crCount.overpay|currency}}</p>
+       <p>{{crCount.overpayPercentage|number}}</p>
+       <p>{{crCount.recentYearDifference|number}}</p>
        </li>
     </ul>
 </div>

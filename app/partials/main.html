@@ -1,39 +1,6 @@
 <div class="container-fluid">
-<p>This is the partial for view 1.</p>
+  <div class="well well-sm"><strong>Credit count</strong></div>
 
-<input type="button" class="btn btn-primary" ng-click="addCredit(credit)" value="add" />
-
-<div ng-repeat="item in credits">
-    <p>Percent per year</p>
-    <p>
-    <input type="text" ng-model="item.percentsYear"/>
-    Monthly percent: {{item.percentsMonth(item.percentsYear)|number}}, {{item.updatePercentsMonth(item.percentsYear)*100|number}}%</p>
-    <p>Inflation: <input type="text" ng-model="item.inflation"/></p>
-    <p>Real percents: {{item.percentsReal(item.percentsYear, item.inflation)|number}}%</p>
-    <p id="credit-amount">Credit amount:</p>
-    <input type="text" value="{{item.creditSum}}" ng-model="item.creditSum"/>
-
-    <ul class="list-unstyled list-inline">
-       <li>
-       <strong>
-       <p>Months:</p>
-       <p>Annuitet coefficient:</p>
-       <p>Monthly payment:</p>
-       <p>Totally payed:</p>
-       <p>Overpay:</p>
-       <p>Overpay percents:</p>
-       <p>Recent year difference:</p>
-       </strong>
-       </li>
-       <li ng-repeat="crCount in item.creditCounts">
-       <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
-       <p>{{crCount.annuitetCoefficient(item.percentsPerMonth, item.creditSum)|number}}</p>
-       <p>{{crCount.monthlyPay|currency}}</p>
-       <p>{{crCount.totalPay|currency}}</p>
-       <p>{{crCount.overpay|currency}}</p>
-       <p>{{crCount.overpayPercentage|number}}</p>
-       <p>{{crCount.recentYearDifference|number}}</p>
-       </li>
-    </ul>
-</div>
+<!--<input type="button" class="btn btn-primary" ng-click="addCredit(credit)" value="add" />-->
+<div credit-dashboard></div>  
 </div>

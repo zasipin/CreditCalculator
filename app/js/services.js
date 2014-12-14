@@ -32,8 +32,8 @@ servicesModule.factory('credit', function() {
         recentYearDifference: creditCount.recentYearDifference || 0
         };
     };
-
-    var creditObj = {
+    var creditObj = function(){};
+    creditObj.prototype = {
         monthsInYear: 12,
         percentsYear: 20,
         percentsMonth: function(percents){ return percents / 12 },
@@ -64,7 +64,7 @@ servicesModule.factory('credit', function() {
             return creditCountArray;
         }()
     };
-    creditObj.updatePercentsMonth = function(yearPercents){
+    creditObj.prototype.updatePercentsMonth = function(yearPercents){
           this.percentsPerMonth = yearPercents / this.monthsInYear / 100;
           return this.percentsPerMonth;
     };

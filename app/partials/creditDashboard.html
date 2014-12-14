@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Percent per year:</label>
+        <div class="col-sm-1 input-group">
+          <input type="text" class="form-control" ng-model="item.percentsYear" ng-change="item.recalculate(item.percentsYear, item.creditSum)"/>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>  
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Monthly percent:</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">{{item.percentsMonth(item.percentsYear)|number}}%</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Inflation:</label>
+        <div class="col-sm-1 input-group">
+          <input type="text" class="form-control"  ng-model="item.inflation"/>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div> 
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Real percents:</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">{{item.percentsReal(item.percentsYear, item.inflation)|number}}%</p>
+        </div>
+      </div>  
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Credit amount:</label>
+        <div class="col-sm-2 input-group">
+          <input type="text"  class="form-control" ng-model="item.creditSum" ng-change="item.recalculate(item.percentsYear, item.creditSum)"/>
+          <span class="input-group-addon">$</span>
+        </div>
+      </div>      
+  </form>
+  </div>  
+    
+    <ul class="list-unstyled list-inline">
+       <li>
+       <strong>
+       <p>Months:</p>
+       <p>Annuitet coefficient:</p>
+       <p>Monthly payment:</p>
+       <p>Totally payed:</p>
+       <p>Overpay:</p>
+       <p>Overpay percents:</p>
+       <p>Recent year difference:</p>
+       </strong>
+       </li>
+       <li ng-repeat="crCount in item.creditCounts">
+       <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
+       <p>{{crCount.annuitetCoefficient|number}}</p>
+       <p>{{crCount.monthlyPay|currency}}</p>
+       <p>{{crCount.totalPay|currency}}</p>
+       <p>{{crCount.overpay|currency}}</p>
+       <p>{{crCount.overpayPercentage|number}}</p>
+       <p>{{crCount.recentYearDifference|number}}</p>
+       </li>
+    </ul>
+</div>

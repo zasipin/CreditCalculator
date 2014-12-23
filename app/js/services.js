@@ -10,7 +10,7 @@ angular.module('myApp.services', []).
   value('version', '0.1');
 */
 var servicesModule = angular.module('myApp.services', []);
-servicesModule.value('version', '0.1');
+servicesModule.value('version', '1.0.0');
 
 servicesModule.factory('credit', function() {
     var CreditCount = function CreditCount(creditCount){

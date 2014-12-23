@@ -52,7 +52,7 @@
        <li ng-repeat="crCount in item.creditCounts">
        <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
        <p>{{crCount.annuitetCoefficient|number : 5}}</p>
-       <p>{{crCount.monthlyPay|currency : "$" : 1 }}</p>
+       <p>{{crCount.monthlyPay | currency : "$" : 0 }}</p>
        <p>{{crCount.totalPay|currency : "$" : 0 }}</p>
        <p>{{crCount.overpay|currency : "$" : 0 }}</p>
        <p>{{crCount.overpayPercentage|number : 2}}</p>

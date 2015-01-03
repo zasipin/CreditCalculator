@@ -14,6 +14,7 @@
           <p class="form-control-static">{{item.percentsMonth(item.percentsYear)|number}}%</p>
         </div>
       </div>
+      <!--
       <div class="form-group">
         <label class="col-sm-2 control-label">Inflation:</label>
         <div class="col-sm-1 input-group">
@@ -26,7 +27,7 @@
         <div class="col-sm-2">
           <p class="form-control-static">{{item.percentsReal(item.percentsYear, item.inflation)|number}}%</p>
         </div>
-      </div>  
+      </div>  -->
       <div class="form-group">
         <label class="col-sm-2 control-label">Credit amount:</label>
         <div class="col-sm-2 input-group">
@@ -37,5 +38,6 @@
   </form>
   </div>  
     
-  <ng-include src="'partials/creditPayListView.html'"></ng-include>
+  <!--<ng-include src="'partials/creditPayListView.html'"></ng-include>-->
+  <ng-include src="'partials/creditPayTableView.html'"></ng-include>
 </div>

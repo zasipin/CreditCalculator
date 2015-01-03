@@ -1,0 +1,20 @@
+    <ul class="list-unstyled list-inline">
+       <li>
+       <strong>
+       <p>Months:</p>
+       <p>Monthly payment:</p>
+       <p>Totally payed:</p>
+       <p>Overpay:</p>
+       <p>Overpay percents:</p>
+       <p>Recent year difference:</p>
+       </strong>
+       </li>
+       <li ng-repeat="crCount in item.creditCounts">
+       <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
+       <p>{{crCount.monthlyPay | currency : "$" : 0 }}</p>
+       <p>{{crCount.totalPay|currency : "$" : 0 }}</p>
+       <p>{{crCount.overpay|currency : "$" : 0 }}</p>
+       <p>{{crCount.overpayPercentage|number : 2}}</p>
+       <p>{{crCount.recentYearDifference|number : 2}}</p>
+       </li>
+    </ul>

@@ -40,13 +40,15 @@ angular.module('myApp.directives', []).
                   };
 
           var Credit = function(settings){
-            this.percentsYear = this.defaultSettings.percentsYear;
+              this.percentsYear = this.defaultSettings.percentsYear;
               this.inflation = this.defaultSettings.inflation;
-              this.creditSum = this.defaultSettings.creditSum; 
+              this.creditSum = this.defaultSettings.creditSum;
+              this.countYears = this.defaultSettings.countYears;
             if(settings){
               this.percentsYear = settings.percentsYear || this.defaultSettings.percentsYear;
               this.inflation = settings.inflation || this.defaultSettings.inflation;
               this.creditSum = settings.creditSum || this.defaultSettings.creditSum;
+              this.countYears = settings.countYears || this.defaultSettings.countYears;
             }
             
             this.percentsPerMonth = 0;
@@ -56,13 +58,10 @@ angular.module('myApp.directives', []).
           };
           Credit.prototype = {
             monthsInYear: 12,
-            //percentsYear: 0,
             percentsMonth: function(percents){ 
               this.updatePercentsMonth(percents);
               return this.percentsPerMonth * 100; 
             },
-            //percentsPerMonth: function(){ return this.percentsMonth / 100; },
-            //inflation: 0,
             percentsReal: function(percents, inflation)
             {
                 return ((1 + percents / 100) / (1 + inflation / 100) - 1) * 100;
@@ -73,7 +72,7 @@ angular.module('myApp.directives', []).
                 var creditCountArray = [],
                     monthsIterate = 12,
                     i = 12,
-                    maxMonths = 300;
+                    maxMonths = this.monthsInYear * this.countYears;
                 for(; i <= 300; i += monthsIterate)
                 {
                     var creditCountObj = new CreditCount({months: i});
@@ -105,7 +104,8 @@ angular.module('myApp.directives', []).
           Credit.prototype.defaultSettings = {
             percentsYear: 10,
             inflation: 1,
-            creditSum: 100000
+            creditSum: 100000,
+            countYears: 25
           };
 
            $scope.item = new Credit({

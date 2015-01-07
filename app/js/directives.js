@@ -50,7 +50,7 @@ angular.module('myApp.directives', []).
               this.creditSum = settings.creditSum || this.defaultSettings.creditSum;
               this.countYears = settings.countYears || this.defaultSettings.countYears;
             }
-            
+            this.percentsYearSlide = this.percentsYear;
             this.percentsPerMonth = 0;
             this.updatePercentsMonth(this.percentsYear);
             this.creditCounts = this.creditCountsInit();
@@ -99,6 +99,14 @@ angular.module('myApp.directives', []).
                   this.creditCounts[i].recentYearDifference = this.creditCounts[i].overpayPercentage - this.creditCounts[i-1].overpayPercentage;
                 }
               } 
+            },
+            updateAfterInputPercents: function(percentsYear, creditSum){
+              this.percentsYearSlide = percentsYear;
+              this.recalculate(percentsYear, creditSum);
+            },
+            updateAfterSlidePercents: function(percentsYear, creditSum){
+              this.percentsYear = +percentsYear;
+              this.recalculate(percentsYear, creditSum);
             }
           };
           Credit.prototype.defaultSettings = {

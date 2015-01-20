@@ -40,16 +40,13 @@ angular.module('myApp.directives', []).
                   };
 
           var Credit = function(settings){
-              this.percentsYear = this.defaultSettings.percentsYear;
-              this.inflation = this.defaultSettings.inflation;
-              this.creditSum = this.defaultSettings.creditSum;
-              this.countYears = this.defaultSettings.countYears;
-            if(settings){
-              this.percentsYear = settings.percentsYear || this.defaultSettings.percentsYear;
-              this.inflation = settings.inflation || this.defaultSettings.inflation;
-              this.creditSum = settings.creditSum || this.defaultSettings.creditSum;
-              this.countYears = settings.countYears || this.defaultSettings.countYears;
-            }
+            settings = angular.extend({}, this.defaultSettings, settings);
+
+            this.percentsYear = settings.percentsYear;
+            this.inflation = settings.inflation;
+            this.creditSum = settings.creditSum;
+            this.countYears = settings.countYears;
+
             this.percentsYearSlide = this.percentsYear;
             this.percentsPerMonth = 0;
             this.updatePercentsMonth(this.percentsYear);
@@ -66,7 +63,6 @@ angular.module('myApp.directives', []).
             {
                 return ((1 + percents / 100) / (1 + inflation / 100) - 1) * 100;
             },
-            //creditSum: 0,
             creditCountsInit: function()
             {
                 var creditCountArray = [],
@@ -77,10 +73,6 @@ angular.module('myApp.directives', []).
                 {
                     var creditCountObj = new CreditCount({months: i});
                     creditCountObj.recalculate(this.percentsPerMonth, this.creditSum);
-                    /*if(creditPrevious)
-                    {
-                        creditCountObj.recentYearDifference = creditCountObj.overpayPercentage - creditPrevious.overpayPercentage;
-                    }*/
                     creditCountArray.push(creditCountObj);
                     var creditPrevious = creditCountObj;
                 }
@@ -117,7 +109,7 @@ angular.module('myApp.directives', []).
           };
 
            $scope.item = new Credit({
-              percentsYear: 20,
+              percentsYear: 22,
               inflation: 7,
               creditSum: 100000
             });

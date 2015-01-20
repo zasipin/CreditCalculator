@@ -52,6 +52,11 @@ angular.module('myApp.directives', []).
             this.updatePercentsMonth(this.percentsYear);
             this.creditCounts = this.creditCountsInit();
             this.recalculate(this.percentsYear, this.creditSum);
+
+            var self = this;
+            $scope.$watch('item.percentsYear', function(newValue, oldValue){
+              self.updateAfterInputPercents(newValue, self.creditSum);
+            });
           };
           Credit.prototype = {
             monthsInYear: 12,

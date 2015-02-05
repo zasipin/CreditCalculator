@@ -18,7 +18,7 @@ angular.module('myApp.directives', []).
   		restrict: "EA",
   		templateUrl: "partials/creditDashboard.html",
   		scope: {},
-      controller: function($scope, $element, $attrs)
+      controller: function($scope, $element, $attrs, localStorageService)
         {
           var CreditCount = function CreditCount(creditCount){
               this.months = creditCount.months || 0;
@@ -41,6 +41,9 @@ angular.module('myApp.directives', []).
 
           var Credit = function(settings){
             settings = angular.extend({}, this.defaultSettings, settings);
+            // get data from local storage
+            settings.percentsYear = localStorageService.get('percentsYear') || settings.percentsYear;
+            settings.creditSum = localStorageService.get('creditSum') || settings.creditSum;
 
             this.percentsYear = settings.percentsYear;
             this.inflation = settings.inflation;
@@ -95,7 +98,10 @@ angular.module('myApp.directives', []).
                 if(i > 0){
                   this.creditCounts[i].recentYearDifference = this.creditCounts[i].overpayPercentage - this.creditCounts[i-1].overpayPercentage;
                 }
-              } 
+              }
+              // update local storage
+              localStorageService.set('creditSum', creditSum);
+              localStorageService.set('percentsYear', percentsYear); 
             },
             updateAfterInputPercents: function(percentsYear, creditSum){
               this.percentsYearSlide = percentsYear;

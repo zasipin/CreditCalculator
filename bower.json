@@ -12,5 +12,6 @@
     "angular-mocks": "~1.2.x",
     "html5-boilerplate": "~4.3.0",
     "bootstrap": "~3.3.2"
+    "angular-local-storage": "~0.1.5"
   }
 }

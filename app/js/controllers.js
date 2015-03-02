@@ -4,6 +4,7 @@
 
 angular.module('myApp.controllers', [])
   .controller('mainCtrl', ['$scope', 'credit',function($scope, credit) {
+      /*
       $scope.credit = credit;  //
       $scope.credits = [];
       $scope.credits.push(new credit());
@@ -22,7 +23,7 @@ angular.module('myApp.controllers', [])
         }
         $scope.lastPercents = item.overpayPercentage;
         return item.recentYearDifference;
-      }
+      }*/
   }])
   .controller('MyCtrl2', ['$scope', function($scope) {
 

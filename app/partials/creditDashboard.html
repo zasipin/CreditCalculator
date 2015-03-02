@@ -2,46 +2,32 @@
   <div class="row">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-sm-2 control-label">Percent per year:</label>
-        <div class="col-sm-1 input-group">
+        <label class="col-sm-2 control-label">Проценты годовые:</label>
+        <div class="col-sm-2 input-group">
           <input type="number" class="form-control" ng-model="item.percentsYear" />
           <span class="input-group-addon">%</span>
         </div>
 
       </div>  
-              <div class="range">
+        <div class="range">
               <input type="range" name="volume" min="0" max="100" ng-model="item.percentsYearSlide" ng-change="item.updateAfterSlidePercents(item.percentsYearSlide, item.creditSum)">
         </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Monthly percent:</label>
+        <label class="col-sm-2 control-label">Проценты в месяц:</label>
         <div class="col-sm-2">
           <p class="form-control-static">{{item.percentsMonth(item.percentsYear)|number}}%</p>
         </div>
       </div>
-      <!--
+
       <div class="form-group">
-        <label class="col-sm-2 control-label">Inflation:</label>
-        <div class="col-sm-1 input-group">
-          <input type="text" class="form-control"  ng-model="item.inflation"/>
-          <span class="input-group-addon">%</span>
-        </div>
-      </div> 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Real percents:</label>
-        <div class="col-sm-2">
-          <p class="form-control-static">{{item.percentsReal(item.percentsYear, item.inflation)|number}}%</p>
-        </div>
-      </div>  -->
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Credit amount:</label>
+        <label class="col-sm-2 control-label">Сумма кредита:</label>
         <div class="col-sm-2 input-group">
           <input type="number"  class="form-control" step="1000" ng-model="item.creditSum" ng-change="item.recalculate(item.percentsYear, item.creditSum)"/>
-          <span class="input-group-addon">$</span>
+          <span class="input-group-addon">&#8381</span>
         </div>
       </div>      
   </form>
   </div>  
     
-  <!--<ng-include src="'partials/creditPayListView.html'"></ng-include>-->
-  <ng-include src="'partials/creditPayTableView.html'"></ng-include>
+   <ng-include src="'partials/creditPayTableView.html'"></ng-include>
 </div>

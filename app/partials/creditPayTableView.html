@@ -2,11 +2,11 @@
 <table class="table table-hover">
       <tr>
        <th>Мес(г)</th>
-       <th>Ежемесячный Платеж</th>
+       <th>Платеж в месяц</th>
        <th>Всего оплата</th>
        <th>Переплата</th>
-       <th>Переплата в процентах</th>
-       <th>Разница с предыдущим годом</th>
+       <th>Переплата, %</th>
+       <th>&Delta; год, %</th>
       </tr>
       <tr ng-repeat="crCount in item.creditCounts">
        <td><strong>{{crCount.months}}({{crCount.months / 12}})</strong></td>

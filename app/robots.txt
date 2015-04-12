@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /bower_components
+Disallow: /css
+Disallow: /img
+Disallow: /js
+Disallow: /node_modules
+Disallow: /partials

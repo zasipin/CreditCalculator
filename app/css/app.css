@@ -1,4 +1,12 @@
 /* app css stylesheet */
+.header {
+  background-color: #5555DD;
+  color: #FFFFFF;
+}
+
+.well-sm.header{
+  padding: 0px;
+}
 
 .menu {
   list-style: none;
@@ -27,4 +35,26 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+@media screen and (max-width: 580px) {
+    table th{
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+}
+@media screen and (max-width: 480px) {
+    table th{
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .table > thead > tr > th, .table > tbody > tr > th, 
+    .table > tfoot > tr > th, .table > thead > tr > td, 
+    .table > tbody > tr > td, .table > tfoot > tr > td
+    {
+      padding: 2px 4px;
+    }
 }

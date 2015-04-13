@@ -1,18 +1,18 @@
 <div class="row">
 <table class="table table-hover">
-      <tr>
-       <th>Mon(y)</th>
-       <th>Monthly payment</th>
-       <th>Totally payed</th>
-       <th>Overpay</th>
-       <th>Overpay percents</th>
-       <th>Recent year difference</th>
+      <tr class="info">
+       <th>Мес(г)</th>
+       <th>Платеж в месяц</th>
+       <th>Всего оплата</th>
+       <th>Переплата</th>
+       <th>Переплата, %</th>
+       <th>&Delta; год, %</th>
       </tr>
       <tr ng-repeat="crCount in item.creditCounts">
        <td><strong>{{crCount.months}}({{crCount.months / 12}})</strong></td>
-       <td>{{crCount.monthlyPay | currency : "$" : 0 }}</td>
-       <td>{{crCount.totalPay|currency : "$" : 0 }}</td>
-       <td>{{crCount.overpay|currency : "$" : 0 }}</td>
+       <td>{{crCount.monthlyPay | currency : "" : 0 }}</td>
+       <td>{{crCount.totalPay|currency : "" : 0 }}</td>
+       <td>{{crCount.overpay|currency : "" : 0 }}</td>
        <td>{{crCount.overpayPercentage|number : 2}}</td>
        <td>{{crCount.recentYearDifference|number : 2}}</td>
       </tr>

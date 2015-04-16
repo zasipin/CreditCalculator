@@ -14,6 +14,6 @@ config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	localStorageServiceProvider.prefix ='cr';
 }]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/main', {templateUrl: 'partials/main.html', controller: 'mainCtrl'});
-  $routeProvider.otherwise({redirectTo: '/main'});
+  $routeProvider.when('/', {templateUrl: 'partials/main.html', controller: 'mainCtrl'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);

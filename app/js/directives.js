@@ -9,6 +9,17 @@ angular.module('myApp.directives', []).
       elm.text(version);
     };
   }])
+  .directive('mailTo', function(){
+    return {
+      restrict: "EA",
+      templateUrl: "partials/mailTo.html",
+      scope: {},
+      controller: function($scope, $element, $attrs, localStorageService, appConfig)
+      {
+        $scope.appConfig = appConfig;
+      }
+    };
+  })
   .directive('creditDashboard', function(){
   	return {
   		link: function(scope, element, attrs)

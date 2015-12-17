@@ -14,7 +14,7 @@ angular.module('myApp.directives', []).
       restrict: "EA",
       templateUrl: "partials/mailTo.html",
       scope: {},
-      controller: function($scope, $element, $attrs, localStorageService, appConfig)
+      controller: function($scope, $element, $attrs, appConfig)
       {
         $scope.appConfig = appConfig;
       }

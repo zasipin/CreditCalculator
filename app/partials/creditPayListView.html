@@ -9,7 +9,7 @@
        <p>Recent year difference:</p>
        </strong>
        </li>
-       <li ng-repeat="crCount in item.creditCounts">
+       <li ng-repeat="crCount in board.creditCounts">
        <p><strong>{{crCount.months}}({{crCount.months / 12}} y.)</strong></p>
        <p>{{crCount.monthlyPay | currency : "$" : 0 }}</p>
        <p>{{crCount.totalPay|currency : "$" : 0 }}</p>

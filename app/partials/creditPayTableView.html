@@ -8,7 +8,7 @@
        <th>Переплата, %</th>
        <th>&Delta; год, %</th>
       </tr>
-      <tr ng-repeat="crCount in item.creditCounts">
+      <tr ng-repeat="crCount in board.creditCounts">
        <td><strong>{{crCount.months}}({{crCount.months / 12}})</strong></td>
        <td>{{crCount.monthlyPay | currency : "" : 0 }}</td>
        <td>{{crCount.totalPay|currency : "" : 0 }}</td>

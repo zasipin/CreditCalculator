@@ -31,15 +31,15 @@ angular.module('myApp.directives', []).
   		scope: {},
         controller: function($scope, $element, $attrs, CreditBoard)
         {
-           $scope.item = new CreditBoard({
+           $scope.board = new CreditBoard({
               percentsYear: 22,
               inflation: 7,
               creditSum: 100000
             });
             // let's try different ways of watching after input
-            var item = $scope.item;
-            $scope.$watch('item.percentsYear', function(newValue, oldValue){
-              item.updateAfterInputPercents(newValue, item.creditSum);
+            var board = $scope.board;
+            $scope.$watch('board.percentsYear', function(newValue, oldValue){
+              board.updateAfterInputPercents(newValue, board.creditSum);
             });
         }
     };

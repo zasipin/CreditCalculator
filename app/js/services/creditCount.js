@@ -4,7 +4,7 @@ angular.module('myApp.services')
 .service('CreditCount', function(){
     var CreditCount = function CreditCount(properties){
               this.months = properties.months >=0 ? properties.months || 0 : 0;
-              this.isForRecentDefference = properties.isForRecentDefference || false;   
+              this.isForRecentDifference = properties.isForRecentDifference || false;   
               this.annuitetCoefficient = 0;     
               this.monthlyPay = 0;
               this.totalPay = 0;
@@ -34,12 +34,12 @@ angular.module('myApp.services')
                  } else {
                         this.overpayPercentage = (this.overpay / creditAmount) * 100;                 
                  }
-                if(!this.isForRecentDefference)
+                if(!this.isForRecentDifference)
                 {
                     recentYear = new CreditCount({ months: this.months - this.monthsInYear, 
                                                 annualPercent: this.annualPercent,
                                                 creditAmount: this.creditAmount,
-                                                isForRecentDefference: true                            
+                                                isForRecentDifference: true                            
                                               });
                     this.recentYearDifference = recentYear.totalPay === 0 ? 0 :
                                                 (this.overpayPercentage - recentYear.overpayPercentage);

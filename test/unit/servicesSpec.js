@@ -46,6 +46,20 @@ describe('CreditCount', function(){
     }));  
 });
 
+describe('CreditCount', function(){
+  it('check re-calculation of CreditCount', inject(function(CreditCount) {
+      var credit = new CreditCount({ 
+        months: 60, 
+        creditAmount: 150000,
+        annualPercent: 22
+      });
+      credit.recalculate(11 / 12 / 100, 150000);
+      expect(Math.round(credit.monthlyPay)).toEqual(3261);
+      expect(credit.recentYearDifference).toBeDefined();
+      expect(credit.recentYearDifference.toFixed(2)).toEqual('6.40');
+    }));  
+});
+    
 
 describe('creditCalculator', function(){
   it('check the existence of creditCalculator', inject(function(creditCalculator) {

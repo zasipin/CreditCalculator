@@ -56,7 +56,7 @@ angular.module('myApp.services')
 
               this.updatePercentsMonth(percentsYear);
               creditCalculator.recalculate(this.percentsPerMonth, creditSum);
-
+                
               // update local storage
               localStorageService.set('creditSum', creditSum);
               localStorageService.set('percentsYear', percentsYear); 

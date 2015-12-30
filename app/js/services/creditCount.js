@@ -17,8 +17,9 @@ angular.module('myApp.services')
           };
     CreditCount.prototype.monthsInYear = 12;
     CreditCount.prototype.recalculate = function(monthlyPercent, creditAmount){
-                 var power = Math.pow((1 + monthlyPercent), this.months);
-                 var recentYear;
+                 var power = Math.pow((1 + monthlyPercent), this.months),
+                    recentYear;
+                 this.updateCoefficients(monthlyPercent, creditAmount);
         
                  if(power === 1) {
                     this.annuitetCoefficient = 0; 
@@ -44,5 +45,11 @@ angular.module('myApp.services')
                                                 (this.overpayPercentage - recentYear.overpayPercentage);
                 }                    
             }; 
+    
+    CreditCount.prototype.updateCoefficients = function(monthlyPercent, creditAmount){
+            this.creditAmount = creditAmount || 0;    
+            this.annualPercent = monthlyPercent * 100 * this.monthsInYear || 0;
+        };
+    
     return CreditCount;
 });

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Проценты годовые:</label>
+        <div class="col-sm-2 input-group">
+          <input type="number" class="form-control" ng-model="board.percentsYear" />
+          <span class="input-group-addon">%</span>
+        </div>
+
+      </div>  
+        <div class="range">
+              <input type="range" name="volume" min="0" max="100" ng-model="board.percentsYearSlide" ng-change="board.updateAfterSlidePercents(board.percentsYearSlide, board.creditSum)">
+        </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Проценты в месяц:</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">{{board.percentsMonth(board.percentsYear)|number}}%</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Сумма кредита:</label>
+        <div class="col-sm-2 input-group">
+          <input type="number"  class="form-control" step="10000" ng-model="board.creditSum" ng-change="board.recalculate(board.percentsYear, board.creditSum)"/>
+          <span class="input-group-addon">&#8381</span>
+        </div>
+      </div>      
+  </form>
+  </div>  
+    
+   <ng-include src="'partials/creditPayTableView.html'"></ng-include>
+</div>

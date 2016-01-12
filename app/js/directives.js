@@ -14,10 +14,10 @@ angular.module('myApp.directives', []).
       restrict: "EA",
       templateUrl: "partials/mailTo.html",
       scope: {},
-      controller: function($scope, $element, $attrs, appConfig)
+      controller: ['$scope', '$element', '$attrs', 'appConfig' ,function($scope, $element, $attrs, appConfig)
       {
         $scope.appConfig = appConfig;
-      }
+      }]
     };
   })
   .directive('creditDashboard', function(){
@@ -29,7 +29,7 @@ angular.module('myApp.directives', []).
   		restrict: "EA",
   		templateUrl: "partials/creditDashboard.html",
   		scope: {},
-        controller: function($scope, $element, $attrs, CreditBoard)
+        controller: ['$scope', '$element', '$attrs', 'CreditBoard', function($scope, $element, $attrs, CreditBoard)
         {
            $scope.board = new CreditBoard({
               percentsYear: 22,
@@ -41,6 +41,6 @@ angular.module('myApp.directives', []).
             $scope.$watch('board.percentsYear', function(newValue, oldValue){
               board.updateAfterInputPercents(newValue, board.creditSum);
             });
-        }
+        }]
     };
   });

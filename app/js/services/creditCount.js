@@ -13,10 +13,11 @@ angular.module('myApp.services')
               this.recentYearDifference = 0;
               this.creditAmount = properties.creditAmount || 0;    
               this.annualPercent = properties.annualPercent || 0;
-              this.recalculate(this.annualPercent / this.monthsInYear / 100, this.creditAmount);
+              this.recalculate(this.annualPercent, this.creditAmount);
           };
     CreditCount.prototype.monthsInYear = 12;
-    CreditCount.prototype.recalculate = function(monthlyPercent, creditAmount){
+    CreditCount.prototype.recalculate = function(annualPercent, creditAmount){
+                 var monthlyPercent = annualPercent / this.monthsInYear / 100;
                  var power = Math.pow((1 + monthlyPercent), this.months),
                     recentYear;
                  this.updateCoefficients(monthlyPercent, creditAmount);
@@ -46,9 +47,9 @@ angular.module('myApp.services')
                 }                    
             }; 
     
-    CreditCount.prototype.updateCoefficients = function(monthlyPercent, creditAmount){
+    CreditCount.prototype.updateCoefficients = function(annualPercent, creditAmount){
             this.creditAmount = creditAmount || 0;    
-            this.annualPercent = monthlyPercent * 100 * this.monthsInYear || 0;
+            this.annualPercent = annualPercent || 0;
         };
     
     return CreditCount;

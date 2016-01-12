@@ -13,11 +13,11 @@ angular.module('myApp.services')
         removeCredit: function(){
             this.credits.pop();
         },
-        recalculate: function(percentsPerMonth, creditSum){
+        recalculate: function(annualPercents, creditSum){
             var i = 0;
             for(; i < this.credits.length; i++)
             {
-                this.credits[i].recalculate(percentsPerMonth, creditSum);
+                this.credits[i].recalculate(annualPercents, creditSum);
             }
         },
         getCredits: function(){

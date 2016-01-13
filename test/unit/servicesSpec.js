@@ -53,7 +53,7 @@ describe('CreditCount', function(){
         creditAmount: 150000,
         annualPercent: 22
       });
-      credit.recalculate(11 / 12 / 100, 150000);
+      credit.recalculate(11, 150000);
       expect(Math.round(credit.monthlyPay)).toEqual(3261);
       expect(credit.recentYearDifference).toBeDefined();
       expect(credit.recentYearDifference.toFixed(2)).toEqual('6.40');

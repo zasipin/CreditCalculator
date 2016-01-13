@@ -20,7 +20,7 @@ angular.module('myApp.services')
                  var monthlyPercent = annualPercent / this.monthsInYear / 100;
                  var power = Math.pow((1 + monthlyPercent), this.months),
                     recentYear;
-                 this.updateCoefficients(monthlyPercent, creditAmount);
+                 this.updateCoefficients(annualPercent, creditAmount);
         
                  if(power === 1) {
                     this.annuitetCoefficient = 0; 

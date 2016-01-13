@@ -12,8 +12,14 @@ describe('service', function() {
 
    });
 */
-  beforeEach(module('myApp.services'));
-  beforeEach(module('LocalStorageModule'));
+    
+  beforeEach(function(){
+    module('myApp.services');
+    module('LocalStorageModule')
+   });
+    
+//  beforeEach(module('myApp.services'));
+//  beforeEach(module('LocalStorageModule'));
 
   describe('version', function() {
     it('should return current version', inject(function(version) {

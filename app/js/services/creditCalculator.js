@@ -22,6 +22,9 @@ angular.module('myApp.services')
         },
         getCredits: function(){
             return this.credits;
+        },
+        clearCredits: function(creditItem){
+            this.credits = [];
         }
     };
     

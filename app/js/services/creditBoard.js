@@ -40,6 +40,7 @@ angular.module('myApp.services')
                     i = 12,
                     maxMonths = this.monthsInYear * this.countYears;
                 
+                creditCalculator.clearCredits();
                 for(; i <= maxMonths; i += monthsIterate)
                 {
                     creditCalculator.addCredit(

@@ -1,4 +1,13 @@
 /* app css stylesheet */
+body {
+    height: 100%;
+}
+
+.page {
+    min-height: 100%;
+    height: auto !important;
+}
+
 .header {
   background-color: #5555DD;
   color: #FFFFFF;

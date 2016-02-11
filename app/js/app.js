@@ -15,7 +15,7 @@ config(['localStorageServiceProvider', function(localStorageServiceProvider){
 }]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'partials/main.html', controller: 'mainCtrl'});
-  $routeProvider.when('/payments/:months', {templateUrl: 'partials/paymentsTimetable.html', controller: 'mainCtrl'});
+  $routeProvider.when('/payments/:months', {templateUrl: 'partials/paymentsTimetable.html', controller: 'paymentsController'});
   $routeProvider.otherwise({redirectTo: '/', controller: 'mainCtrl'});
 }]).
 constant("appConfig", {

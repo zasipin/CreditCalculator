@@ -1,1 +1,19 @@
-<div>payments view</div> 
+<div class="row">
+<table class="table table-hover">
+      <tr class="info">
+       <th>Мес</th>
+       <th>Платеж</th>
+       <th>Платеж сверх минимального</th>
+       <th>Всего выплачено</th>
+       <th>Долг</th>
+      </tr>
+      <tr ng-repeat="payment in payments">
+       <td><strong>months {{payment}}</strong></td>
+       <td>monthlyPay</td>
+       <td>additionalPay</td>
+       <td> </td>
+       <td>leftToPay</td>
+      </tr>
+</table>    
+</div>
+  

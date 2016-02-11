@@ -7,19 +7,18 @@ angular.module('myApp.directives')
   		},
   		restrict: "EA",
   		templateUrl: "js/directives/paymentsTimetable/payments.html",
-  		scope: {},
+  		scope: {
+            months: "@"
+        },
         controller: ['$scope', '$element', '$attrs', 'CreditBoard', function($scope, $element, $attrs, CreditBoard)
         {
-           $scope.board = new CreditBoard({
-              percentsYear: 22,
-              inflation: 7,
-              creditSum: 100000
-            });
+            $scope.payments = [];
+            $scope.months = +$scope.months;
+            for(var i = 1; i <= $scope.months; i++)
+            {
+                $scope.payments.push(i);
+            }
             // let's try different ways of watching after input
-            var board = $scope.board;
-            $scope.$watch('board.percentsYear', function(newValue, oldValue){
-              board.updateAfterInputPercents(newValue, board.creditSum);
-            });
         }]
     };
   });

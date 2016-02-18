@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.services')
-.service('CreditBoard', ['localStorageService', 'CreditCount', 'creditCalculator', function(localStorageService, CreditCount, creditCalculator){
+.service('CreditBoard', ['localStorageService', 'CreditCount', 'creditCalculator', 'creditData', function(localStorageService, CreditCount, creditCalculator, creditData){
     var CreditBoard = function(settings){
             settings = angular.extend({}, this.defaultSettings, settings);
             // get data from local storage
@@ -57,7 +57,7 @@ angular.module('myApp.services')
 
               this.updatePercentsMonth(percentsYear);
               creditCalculator.recalculate(percentsYear, creditSum);
-                
+              creditData.update(percentsYear, creditSum);    
               // update local storage
               localStorageService.set('creditSum', creditSum);
               localStorageService.set('percentsYear', percentsYear); 

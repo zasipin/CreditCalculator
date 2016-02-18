@@ -10,14 +10,30 @@ angular.module('myApp.directives')
   		scope: {
             months: "@"
         },
-        controller: ['$scope', '$element', '$attrs', 'CreditBoard', function($scope, $element, $attrs, CreditBoard)
+        controller: ['$scope', '$element', '$attrs', 'creditData', 'creditCalculator', 'CreditCountPayments' , function($scope, $element, $attrs, creditData, creditCalculator, CreditCountPayments)
         {
+            var calculator = creditCalculator.getInstance(),
+                credit, 
+                prevCredit = new CreditCountPayments({months: 0, annualPercent: 0, creditAmount: 0}),
+                percentsYear = creditData.percents,
+                creditSum = creditData.creditSum,
+                paymentToCredit = 0;
             $scope.payments = [];
             $scope.months = +$scope.months;
-            for(var i = 1; i <= $scope.months; i++)
+            $scope.updatePayments = function(){
+                console.log('change called');
+            };
+            
+            for(var i = $scope.months; i > 0; i--)
             {
-                $scope.payments.push(i);
+                creditSum = creditSum - paymentToCredit;
+                credit = new CreditCountPayments({months: i, annualPercent: percentsYear, creditAmount: creditSum});
+                calculator.addCredit(credit);
+                prevCredit = credit;
+                paymentToCredit = credit.monthlyPay - percentsYear * creditSum / 100 / 12;
             }
+            
+            $scope.payments = calculator.getCredits();
             // let's try different ways of watching after input
         }]
     };

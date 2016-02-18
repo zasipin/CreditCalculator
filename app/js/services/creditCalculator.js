@@ -25,7 +25,11 @@ angular.module('myApp.services')
         },
         clearCredits: function(creditItem){
             this.credits = [];
-        }
+        },
+        getInstance: function(){
+            return new CreditCalculator();
+        },
+
     };
     
     return new CreditCalculator();

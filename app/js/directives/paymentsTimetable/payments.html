@@ -4,15 +4,15 @@
        <th>Мес</th>
        <th>Платеж</th>
        <th>Платеж сверх минимального</th>
-       <th>Всего выплачено</th>
+       <!--<th>Всего выплачено</th>-->
        <th>Долг</th>
       </tr>
       <tr ng-repeat="payment in payments">
-       <td><strong>months {{months - payment.months + 1}}</strong></td>
-       <td>monthlyPay: {{payment.monthlyPay}} </td>
-       <td>extraPay <input type="text" ng-model="payment.extraPaymentRecentMonth" ng-change="updatePayments(payment.extraPaymentRecentMonth)"> </td>
-       <td> </td>
-       <td>leftToPay</td>
+       <td><strong>{{months - payment.months + 1}}</strong></td>
+       <td>{{payment.monthlyPay|currency : "" : 0 }} </td>
+       <td><input type="text" ng-model="payment.extraPayment" ng-change="updatePayments(payment)"> </td>
+       <!--<td> </td>-->
+       <td>{{payment.leftToPay|currency : "" : 0 }}</td>
       </tr>
 </table>    
 </div>

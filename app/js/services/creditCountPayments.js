@@ -10,16 +10,20 @@ angular.module('myApp.services')
               this.creditAmount = properties.creditAmount || 0;    
               this.annualPercent = properties.annualPercent || 0;
               this.recalculate(this.annualPercent, this.creditAmount);
-            
-            this.extraPayment = properties.extraPayment || 0;
-            this.recalculate(this.annualPercent, this.creditAmount);
+              this.paymentToCredit = 0;    
+              this.leftToPay = 0;    
+              this.extraPayment = properties.extraPayment || 0;
+              this.recalculate(this.annualPercent, this.creditAmount);
         };
+        
         CreditCountPayments.prototype = Object.create(CreditCount.prototype);
-        CreditCountPayments.prototype.recalculate = function(annualPercent, creditAmount){
+        
+        CreditCountPayments.prototype.recalculate = function(annualPercent, creditAmount, extraPayment){
                  var monthlyPercent = annualPercent / this.monthsInYear / 100;
                  var power = Math.pow((1 + monthlyPercent), this.months),
                     recentYear;
-        
+                 this.creditAmount = creditAmount;    
+                 this.extraPayment = extraPayment || this.extraPayment;
                  if(power === 1) {
                     this.annuitetCoefficient = 0; 
                  } else {
@@ -27,6 +31,8 @@ angular.module('myApp.services')
                  }
                  
                  this.monthlyPay = creditAmount * this.annuitetCoefficient;
+                 this.paymentToCredit = this.monthlyPay - annualPercent * creditAmount / 100 / 12;
+                 this.leftToPay = this.creditAmount - this.paymentToCredit - this.extraPayment;
             };
         return CreditCountPayments;
     }]);

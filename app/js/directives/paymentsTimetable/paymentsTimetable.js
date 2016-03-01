@@ -17,11 +17,30 @@ angular.module('myApp.directives')
                 prevCredit = new CreditCountPayments({months: 0, annualPercent: 0, creditAmount: 0}),
                 percentsYear = creditData.percents,
                 creditSum = creditData.creditSum,
-                paymentToCredit = 0;
+                paymentToCredit = 0,
+                updateCretidPayments = function(creditPayment){
+                    var payment = creditPayment || {},
+                        credits, 
+                        credit;
+                    
+                    if(payment instanceof CreditCountPayments)
+                    {
+                        payment.recalculate(payment.annualPercent, payment.creditAmount, payment.extraPayment);
+
+                        for(var i = 1; i < $scope.payments.length; i++)
+                        {
+                            //$scope.payments[i].recalculate($scope.payments[i-1].annualPercent, $scope.payments[i-1].creditAmount - $scope.payments[i-1].paymentToCredit - $scope.payments[i-1].extraPayment);
+                            $scope.payments[i].recalculate($scope.payments[i-1].annualPercent, $scope.payments[i-1].leftToPay);
+                        }
+                    }
+                };
+            
             $scope.payments = [];
             $scope.months = +$scope.months;
-            $scope.updatePayments = function(){
-                console.log('change called');
+            
+            $scope.updatePayments = function(creditPayment){
+                updateCretidPayments(creditPayment);
+                console.log(creditPayment.extraPayment);
             };
             
             for(var i = $scope.months; i > 0; i--)

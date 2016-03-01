@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div class="row">
 <table class="table table-hover">
       <tr class="info">
@@ -10,10 +11,11 @@
       <tr ng-repeat="payment in payments">
        <td><strong>{{months - payment.months + 1}}</strong></td>
        <td>{{payment.monthlyPay|currency : "" : 0 }} </td>
-       <td><input type="text" ng-model="payment.extraPayment" ng-change="updatePayments(payment)"> </td>
+       <td><input type="text" ng-model="payment.extraPayment" ng-change="updatePayments(payment)"/> </td>
        <!--<td> </td>-->
        <td>{{payment.leftToPay|currency : "" : 0 }}</td>
       </tr>
 </table>    
 </div>
+</div> 
   

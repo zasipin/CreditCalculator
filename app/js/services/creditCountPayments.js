@@ -11,6 +11,7 @@ angular.module('myApp.services')
               this.annualPercent = properties.annualPercent || 0;
               this.recalculate(this.annualPercent, this.creditAmount);
               this.paymentToCredit = 0;    
+              this.paymentToPercents = 0;
               this.leftToPay = 0;    
               this.extraPayment = properties.extraPayment || 0;
               this.recalculate(this.annualPercent, this.creditAmount);
@@ -31,7 +32,8 @@ angular.module('myApp.services')
                  }
                  
                  this.monthlyPay = creditAmount * this.annuitetCoefficient;
-                 this.paymentToCredit = this.monthlyPay - annualPercent * creditAmount / 100 / 12;
+                 this.paymentToPercents = annualPercent * creditAmount / 100 / 12;     
+                 this.paymentToCredit = this.monthlyPay - this.paymentToPercents;
                  this.leftToPay = this.creditAmount - this.paymentToCredit - this.extraPayment;
             };
         return CreditCountPayments;

@@ -1,9 +1,12 @@
 <div class="container-fluid">
 <div class="row">
+<h4>Сумма кредита: {{creditSum}}, Проценты годовые: {{percentsYear}}%, Срок кредита: {{months}}мес.</h4>
 <table class="table table-hover">
       <tr class="info">
        <th>Мес</th>
        <th>Платеж</th>
+       <th>За кредит</th>
+       <th>Проценты</th>
        <th>Платеж сверх минимального</th>
        <!--<th>Всего выплачено</th>-->
        <th>Долг</th>
@@ -11,7 +14,15 @@
       <tr ng-repeat="payment in payments">
        <td><strong>{{months - payment.months + 1}}</strong></td>
        <td>{{payment.monthlyPay|currency : "" : 0 }} </td>
-       <td><input type="text" ng-model="payment.extraPayment" ng-change="updatePayments(payment)"/> </td>
+       <td>{{payment.paymentToCredit|currency : "" : 0 }} </td>
+       <td>{{payment.paymentToPercents|currency : "" : 0 }} </td>
+       <td>
+       <div class="row">
+          <div class="col-xs-5">
+            <input type="text" ng-model="payment.extraPayment" ng-change="updatePayments(payment)" class="form-control input-medium"/>
+          </div>
+        </div>   
+        </td>
        <!--<td> </td>-->
        <td>{{payment.leftToPay|currency : "" : 0 }}</td>
       </tr>

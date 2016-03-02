@@ -10,18 +10,16 @@ angular.module('myApp.directives')
   		scope: {
             months: "@"
         },
-        controller: ['$scope', '$element', '$attrs', 'creditData', 'creditCalculator', 'CreditCountPayments' , function($scope, $element, $attrs, creditData, creditCalculator, CreditCountPayments)
+        controller: ['$scope', '$element', '$attrs', 'creditData', 'creditCalculator', 'CreditCountPayments', 'localStorageService' , function($scope, $element, $attrs, creditData, creditCalculator, CreditCountPayments, localStorageService)
         {
             var calculator = creditCalculator.getInstance(),
                 credit, 
                 prevCredit = new CreditCountPayments({months: 0, annualPercent: 0, creditAmount: 0}),
-                percentsYear = creditData.percents,
-                creditSum = creditData.creditSum,
+                percentsYear = creditData.percents || localStorageService.get('percentsYear'),
+                creditSum = creditData.creditSum || localStorageService.get('creditSum'),
                 paymentToCredit = 0,
                 updateCretidPayments = function(creditPayment){
-                    var payment = creditPayment || {},
-                        credits, 
-                        credit;
+                    var payment = creditPayment || {};
                     
                     if(payment instanceof CreditCountPayments)
                     {
@@ -29,7 +27,6 @@ angular.module('myApp.directives')
 
                         for(var i = 1; i < $scope.payments.length; i++)
                         {
-                            //$scope.payments[i].recalculate($scope.payments[i-1].annualPercent, $scope.payments[i-1].creditAmount - $scope.payments[i-1].paymentToCredit - $scope.payments[i-1].extraPayment);
                             $scope.payments[i].recalculate($scope.payments[i-1].annualPercent, $scope.payments[i-1].leftToPay);
                         }
                     }
@@ -37,10 +34,11 @@ angular.module('myApp.directives')
             
             $scope.payments = [];
             $scope.months = +$scope.months;
+            $scope.creditSum = creditSum;
+            $scope.percentsYear = percentsYear;
             
             $scope.updatePayments = function(creditPayment){
                 updateCretidPayments(creditPayment);
-                console.log(creditPayment.extraPayment);
             };
             
             for(var i = $scope.months; i > 0; i--)

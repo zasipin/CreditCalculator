@@ -12,7 +12,7 @@ var gulp = require('gulp'),
              ],
       html: ['app/index.html'],    
       htmlPartials: ['app/partials/*.html'],
-      htmlDirectivesPartials: ['app/directives/**/*.html'],
+      htmlDirectivesPartials: ['app/js/directives/**/*.html'],
       bowerComponents: ['app/bower_components/**/*.*'],
       img: ['app/img/**/*.*']    
     };

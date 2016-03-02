@@ -6,6 +6,7 @@ var gulp = require('gulp'),
       css: ['app/css/app.css'],
       script: ['app/js/app.js', 'app/js/services.js', 'app/js/services/creditBoard.js',
               'app/js/services/creditCalculator.js', 'app/js/services/creditCount.js',
+               'app/js/services/creditCountPayments.js', 'app/js/services/creditData.js',
               'app/js/controllers.js', 'app/js/filters.js', 'app/js/directives.js',
               'app/js/directives/**/*.js',
               'app/js/gAnalytics.js', 'app/js/yaMetrics.js'
@@ -42,7 +43,7 @@ gulp.task('htmlPartials', function(){
 
 gulp.task('htmlDirectivesPartials', function(){
   return gulp.src(paths.htmlDirectivesPartials)
-          .pipe(gulp.dest('dist/directives/'));
+          .pipe(gulp.dest('dist/js/directives/'));
 });
 
 gulp.task('bowerComponents', function(){

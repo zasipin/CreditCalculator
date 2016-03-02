@@ -22,7 +22,14 @@ angular.module('myApp.services')
         },
         getCredits: function(){
             return this.credits;
-        }
+        },
+        clearCredits: function(creditItem){
+            this.credits = [];
+        },
+        getInstance: function(){
+            return new CreditCalculator();
+        },
+
     };
     
     return new CreditCalculator();

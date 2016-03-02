@@ -15,7 +15,8 @@ config(['localStorageServiceProvider', function(localStorageServiceProvider){
 }]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'partials/main.html', controller: 'mainCtrl'});
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider.when('/payments/:months', {templateUrl: 'partials/paymentsTimetable.html', controller: 'paymentsController'});
+  $routeProvider.otherwise({redirectTo: '/', controller: 'mainCtrl'});
 }]).
 constant("appConfig", {
         "emailToAdress": "creditcalculator.developer@gmail.com",

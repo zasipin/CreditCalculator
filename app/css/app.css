@@ -51,6 +51,11 @@ body {
   background-color: #eeeeee;
 }
 
+.col-xs-5 input[type="text"]
+{
+    min-width: 85px;    
+}
+
 @media screen and (max-width: 580px) {
     table th{
       word-wrap: break-word;
